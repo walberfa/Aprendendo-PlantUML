@@ -1,0 +1,7 @@
+@startuml
+actor User #pink
+User -> Interface: hello
+Interface -> Controle: okay?
+Interface <- Controle: okay
+User <- Interface: hi!
+@enduml
