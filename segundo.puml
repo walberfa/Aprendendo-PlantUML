@@ -1,0 +1,13 @@
+@startuml
+actor Cliente 
+Cliente -> Janela_de_solitacaoo_do_evento 
+Janela_de_solitacaoo_do_evento -> Solicitacaoo_do_evento : FirstRequest()
+activate Solicitacao_do_evento
+Solicitacao_do_evento -> Solicitacao_do_evento : idRequest = authenticate
+Solicitacao_do_evento -> Calendario : avaliable = CheckDate()
+deactivate Solicitacao_do_evento
+rnote over Calendario
+ enviar
+ email
+endrnote
+@enduml
