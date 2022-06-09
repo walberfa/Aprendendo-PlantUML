@@ -1,0 +1,21 @@
+@startuml
+actor Cliente
+actor Banco
+Cliente -> Banco : 1: Solicita abertura de conta
+activate Fisica
+Banco -> Fisica : 2: Consulta cliente : ConCPF()
+Banco <- Fisica : 3:[Se existir] Dados do cliente
+Banco -> Fisica : 4:[Se necessario] Atualizar: Gravar()
+Fisica -> Fisica : 5: Validar CPF: ValCPF()
+Banco <- Fisica : 6: Cliente atualizado
+deactivate Fisica
+Banco -> Cliente : 7: Pedido aprovado
+Cliente -> Banco : 8: Fornecer valor de deposito e senha
+Banco -> Conta_Comum : 9: Abrir conta: Abertura()
+activate Conta_Comum
+Conta_Comum -> Historico : 10: Registrar historico: Gravar()
+Historico -> Conta_Comum : 11: Historico registrado com sucesso
+deactivate Conta_Comum
+Conta_Comum -> Banco : 12: Numero da conta gerada
+Banco -> Cliente : 13: Abertura de conta concluida
+@enduml
